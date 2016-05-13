@@ -1,0 +1,14 @@
+name: freeciv-server
+summary: Civilization turn based strategy game server
+maintainer: Rye Terrell <ryeterrell@ryeterrell.net>
+description: |
+  Freeciv is a free clone of the turn based strategy game Civilization. In
+  this game, each player becomes leader of a civilisation, fighting to
+  obtain the ultimate goal: the extinction of all other civilisations.
+  This is the Freeciv game server.
+tags:
+  - app-servers
+subordinate: false
+provides:
+  server:
+    interface: freeciv

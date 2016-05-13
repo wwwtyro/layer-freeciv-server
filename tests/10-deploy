@@ -1,0 +1,27 @@
+#!/usr/bin/python3
+
+import socket
+import amulet
+import requests
+import unittest
+
+class TestCharm(unittest.TestCase):
+    def setUp(self):
+        self.d = amulet.Deployment(series="xenial")
+        self.d.add('freeciv-server')
+        self.d.configure('freeciv-server', {
+            'port': 5567,
+            'server_id': 'freeciv'
+        })
+        self.d.expose('freeciv-server')
+        self.d.setup()
+        self.d.sentry.wait()
+        self.unit = self.d.sentry['freeciv-server'][0]
+
+    def test_is_listening(self):
+        addr = self.unit.info["public-address"]
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect((addr, 5567))
+
+if __name__ == '__main__':
+    unittest.main()

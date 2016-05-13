@@ -1,0 +1,10 @@
+options:
+  server_id:
+    type: string
+    default: "Freeciv"
+    description: "Server ID"
+  port:
+    type: int
+    default: 5556
+    description: "Server port"
+  
